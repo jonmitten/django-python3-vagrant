@@ -3,6 +3,11 @@
 # Install git for version control, pip for install python packages
 echo 'Installing git, Python 3, and pip...'
 # libfreetype6-dev ziblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+sudo apt-get update
+sudo apt-get install -y postgresql postgresql-contrib
+sudo -u postgres createuser vagrant -s && sudo -u postgres createdb vagrant
+sudo apt-get install -y postgis postgresql-9.3-postgis-2.1
+sudo -u postgres psql -c "CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;" vagrant
 sudo apt-get -qq install git python3 python3-dev libjpeg-dev libtiff5-dev zlib1g-dev > /dev/null 2>&1
 curl -s https://bootstrap.pypa.io/get-pip.py | python3.4 > /dev/null 2>&1
 
